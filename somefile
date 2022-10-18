@@ -1,1 +1,1 @@
-{{ cookiecutter.foo_val }}
+{{ cookiecutter.foo }}
