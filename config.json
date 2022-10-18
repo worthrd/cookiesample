@@ -1,3 +1,0 @@
-{
-	"foo": "{{ cookiecutter.foo_val }}"
-}
