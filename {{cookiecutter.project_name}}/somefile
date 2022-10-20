@@ -1,1 +1,3 @@
 {{ cookiecutter.foo }}
+
+{{ cookiecutter.file_types }}
