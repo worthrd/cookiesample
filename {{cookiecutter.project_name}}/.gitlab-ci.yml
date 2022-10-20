@@ -7,12 +7,12 @@ variables:
 
 
 stages:
-  {%- if cookiecutter.stage_eni_review_deploy_system_install -%}
+{%- if cookiecutter.stage_eni_review_deploy_system_install -%}
   - eni-review-deploy-system-install
-  {% endif %}
-  {%- if cookiecutter.stage_eni_staging_deploy_system_install -%}
+{% endif %}
+{%- if cookiecutter.stage_eni_staging_deploy_system_install -%}
   - eni-staging-deploy-system-install
-  {% endif %}
+{% endif %}
 
 
 stages_x:
