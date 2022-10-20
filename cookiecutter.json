@@ -1,4 +1,21 @@
 {
 	"project_name": "test project name",
-	"foo": "some initial value"
+	"foo": "some initial value",
+	"file_types": {
+        "png": {
+            "name": "Portable Network Graphic",
+            "library": "libpng",
+            "apps": [
+                "GIMP"
+            ]
+        },
+        "bmp": {
+            "name": "Bitmap",
+            "library": "libbmp",
+            "apps": [
+                "Paint",
+                "GIMP"
+            ]
+        }
+    }
 }
