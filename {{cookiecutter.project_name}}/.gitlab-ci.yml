@@ -7,7 +7,7 @@ variables:
 
 
 stages:
-{%--%}
+{{ cookiecutter.ws }}
 {%- if cookiecutter.stage_eni_review_deploy_system_install -%}
   - eni-review-deploy-system-install
 {% endif %}
