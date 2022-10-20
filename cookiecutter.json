@@ -1,21 +1,14 @@
 {
-	"project_name": "test project name",
-	"foo": "some initial value",
-	"file_types": {
-        "png": {
-            "name": "Portable Network Graphic",
-            "library": "libpng",
-            "apps": [
-                "GIMP"
-            ]
-        },
-        "bmp": {
-            "name": "Bitmap",
-            "library": "libbmp",
-            "apps": [
-                "Paint",
-                "GIMP"
-            ]
-        }
-    }
-}
+	"full_name": "ENI Development Team",
+	"email": "eenidev@ericsson.com",
+	"username": "eenidev",
+	"project_market": "global",
+	"project_title": "ENI Deployment {{ cookiecutter.project_customer.title() }}",
+	"project_name": "{{ cookiecutter.project_title.lower().replace(' ', '-').replace('_', '-') }}",
+	"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+	"project_short_description": "{{ cookiecutter.project_title }}",
+	"project_url": "https://gitlab.internal.ericsson.com/eni-{{ cookiecutter.project_market.lower() }}/{{ cookiecutter.project_name }}",
+	"stage_eni-review-deploy-system-install": false,
+	"stage_eni-staging-deploy-system-install": false
+  }
+  
