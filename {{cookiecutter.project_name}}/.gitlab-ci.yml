@@ -9,8 +9,10 @@ variables:
 stages:
   {%- if cookiecutter.stage_eni-review-deploy-system-install -%}
   - eni-review-deploy-system-install
+  {% endif %}
   {%- if cookiecutter.stage_eni-staging-deploy-system-install -%}
   - eni-staging-deploy-system-install
+  {% endif %}
 
 
 stages_x:
