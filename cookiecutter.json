@@ -8,7 +8,7 @@
 	"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
 	"project_short_description": "{{ cookiecutter.project_title }}",
 	"project_url": "https://gitlab.internal.ericsson.com/eni-{{ cookiecutter.project_market.lower() }}/{{ cookiecutter.project_name }}",
-	"stage_eni-review-deploy-system-install": false,
-	"stage_eni-staging-deploy-system-install": false
+	"stage_eni_review_deploy_system_install": false,
+	"stage_eni_staging_deploy_system_install": false
   }
   
