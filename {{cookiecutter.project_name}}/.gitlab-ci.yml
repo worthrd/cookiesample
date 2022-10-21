@@ -29,7 +29,7 @@ stages:
 
 
 include:
-{{ cookiecutter.ws }}
+{{ cookiecutter._new_line }}
 {%- if cookiecutter.stage_eni_review_deploy_system_install -%}
   - project: "nia/nia-templates/eni-cicd-assets"
     ref: master
