@@ -10,6 +10,10 @@
 	"project_url": "https://gitlab.internal.ericsson.com/eni-{{ cookiecutter.project_market.lower() }}/{{ cookiecutter.project_name }}",
 	"stage_eni_review_deploy_system_install": false,
 	"stage_eni_staging_deploy_system_install": false,
-	"ws": ""
+	"stage_eni_deploy_tools_notebook": false,
+	"stage_eni_deploy_cucr_cli": false,
+	"stage_eni_deploy_cucr_gateway": false,
+	"stage_eni_deploy_cucr_usecase": false,
+	"_new_line": "\n\r"
   }
   

@@ -7,12 +7,53 @@ variables:
 
 
 stages:
-{{ cookiecutter.ws }}
+{{ cookiecutter._new_line }}
 {%- if cookiecutter.stage_eni_review_deploy_system_install -%}
   - eni-review-deploy-system-install
 {% endif %}
 {%- if cookiecutter.stage_eni_staging_deploy_system_install -%}
   - eni-staging-deploy-system-install
+{% endif %}
+{%- if cookiecutter.stage_eni_deploy_tools_notebook -%}
+  - eni-deploy-tools-notebook
+{% endif %}
+{%- if cookiecutter.stage_eni_deploy_cucr_cli -%}
+  - eni-deploy-cucr-cli
+{% endif %}
+{%- if cookiecutter.stage_eni_deploy_cucr_gateway -%}
+  - eni-deploy-cucr-gateway
+{% endif %}
+{%- if cookiecutter.stage_eni_deploy_cucr_usecase -%}
+  - eni-deploy-cucr-usecase
+{% endif %}
+
+
+include:
+{{ cookiecutter.ws }}
+{%- if cookiecutter.stage_eni_review_deploy_system_install -%}
+  - project: "nia/nia-templates/eni-cicd-assets"
+    ref: master
+    file: "gitlab-ci/worker-server/eni-review-env.gitlab-ci.yaml"
+{% endif %}
+{%- if cookiecutter.stage_eni_staging_deploy_system_install -%}
+  - project: "nia/nia-templates/eni-cicd-assets"
+    ref: master
+    file: "gitlab-ci/worker-server/eni-staging-env.gitlab-ci.yaml"
+{% endif %}
+{%- if cookiecutter.stage_eni_deploy_tools_notebook -%}
+  - project: "nia/nia-templates/eni-cicd-assets"
+    ref: master
+    file: "gitlab-ci/worker-server/eni-deploy-tools.gitlab-ci.yaml"
+{% endif %}
+{%- if cookiecutter.stage_eni_deploy_cucr_cli or cookiecutter.stage_eni_deploy_cucr_gateway -%}
+  - project: "nia/nia-templates/eni-cicd-assets"
+    ref: release/21.Q2
+    file: "gitlab-ci/worker-server/eni-deploy-cucr.gitlab-ci.yaml"
+{% endif %}
+{%- if cookiecutter.stage_eni_deploy_cucr_usecase -%}
+  - project: "nia/nia-templates/eni-cicd-assets"
+    ref: master
+    file: "gitlab-ci/worker-server/eni-deploy-usecase.gitlab-ci.yaml"
 {% endif %}
 
 
