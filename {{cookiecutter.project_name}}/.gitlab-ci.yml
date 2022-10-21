@@ -6,8 +6,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 
-stages:
-{{ cookiecutter._new_line }}
+stages: {{ cookiecutter._new_line }}
 {%- if cookiecutter.stage_eni_review_deploy_system_install -%}
   - eni-review-deploy-system-install
 {% endif %}
@@ -26,10 +25,28 @@ stages:
 {%- if cookiecutter.stage_eni_deploy_cucr_usecase -%}
   - eni-deploy-cucr-usecase
 {% endif %}
+{%- if cookiecutter.stage_eni_launch_system_dashboards -%}
+  - eni-launch-system-dashboards
+{% endif %}
+{%- if cookiecutter.stage_eni_launch_customer_portal -%}
+- eni-launch-customer-portal
+{% endif %}
+{%- if cookiecutter.stage_eni_launch_customization -%}
+  - eni-launch-customization
+{% endif %}
+{%- if cookiecutter.stage_eni_sanity_check_worker -%}
+  - eni-sanity-check-worker
+{% endif %}
+{%- if cookiecutter.stage_eni_uninstall -%}
+  - eni-uninstall
+{% endif %}
+{%- if cookiecutter.stage_eni_prod_uninstall -%}
+  - eni-prod-uninstall
+{% endif %}
 
 
-include:
-{{ cookiecutter._new_line }}
+
+include: {{ cookiecutter._new_line }}
 {%- if cookiecutter.stage_eni_review_deploy_system_install -%}
   - project: "nia/nia-templates/eni-cicd-assets"
     ref: master
@@ -55,48 +72,28 @@ include:
     ref: master
     file: "gitlab-ci/worker-server/eni-deploy-usecase.gitlab-ci.yaml"
 {% endif %}
-
-
-stages_x:
-  - eni-review-deploy-system-install
-  - eni-staging-deploy-system-install
-  - eni-deploy-tools-notebook
-  - eni-deploy-cucr-cli
-  - eni-deploy-cucr-gateway
-  - eni-deploy-cucr-usecase
-  - eni-launch-system-dashboards
-  - eni-launch-customer-portal
-  - eni-launch-customization
-  - eni-sanity-check-worker
-  - eni-uninstall
-  - eni-prod-uninstall
-
-include_x:
+{%- if cookiecutter.stage_eni_launch_system_dashboards -%}
   - project: "nia/nia-templates/eni-cicd-assets"
-    ref: release/21.Q2
-    file: "gitlab-ci/worker-server/eni-review-env.gitlab-ci.yaml"
-  - project: "nia/nia-templates/eni-cicd-assets"
-    ref: release/21.Q2
-    file: "gitlab-ci/worker-server/eni-staging-env.gitlab-ci.yaml"
-  - project: "nia/nia-templates/eni-cicd-assets"
-    ref: release/21.Q2
-    file: "gitlab-ci/worker-server/eni-deploy-cucr.gitlab-ci.yaml"
-  - project: "nia/nia-templates/eni-cicd-assets"
-    ref: release/21.Q2
-    file: "gitlab-ci/worker-server/eni-deploy-tools.gitlab-ci.yaml"
-  - project: "nia/nia-templates/eni-cicd-assets"
-    ref: release/21.Q2
-    file: "gitlab-ci/worker-server/eni-deploy-usecase.gitlab-ci.yaml"
-  - project: "nia/nia-templates/eni-cicd-assets"
-    ref: release/21.Q2
+    ref: master
     file: "gitlab-ci/worker-server/eni-deploy-system-dashboards.gitlab-ci.yaml" 
+{% endif %}
+{%- if cookiecutter.stage_eni_launch_customer_portal or cookiecutter.stage_eni_launch_customization -%}
   - project: "nia/nia-templates/eni-cicd-assets"
-    ref: release/21.Q2
+    ref: master
     file: "gitlab-ci/worker-server/eni-deploy-customization.gitlab-ci.yaml"    
+{% endif %}
+{%- if cookiecutter.stage_eni_sanity_check_worker -%}
   - project: "nia/nia-templates/eni-cicd-assets"
-    ref: release/21.Q2
+    ref: master
+    file: "gitlab-ci/worker-server/eni-deploy.gitlab-ci.yaml"
+{% endif %}
+{%- if cookiecutter.stage_eni_uninstall -%}
+  - project: "nia/nia-templates/eni-cicd-assets"
+    ref: master
     file: "gitlab-ci/worker-server/eni-deploy-uninstall.gitlab-ci.yaml"
+{% endif %}
+{%- if cookiecutter.stage_eni_prod_uninstall -%}
   - project: "nia/nia-templates/eni-cicd-assets"
-    ref: release/21.Q2
+    ref: master
     file: "gitlab-ci/worker-server/eni-deploy-prod-uninstall.gitlab-ci.yaml"
-
+{% endif %}
